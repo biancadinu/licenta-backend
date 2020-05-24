@@ -16,14 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from backend import settings
 from restapi import views
 
 api_urlpatterns = [
     path('food/', views.FoodListCreateView.as_view()),
-    path('daily-food-list/', views.DailyFoodListCreate.as_view())
+    path('daily-food-list/', views.DailyFoodListCreate.as_view()),
+    path('recipe/', views.RecipeList.as_view()),
+    path('recipe/<int:pk>', views.RecipeGet.as_view())
 ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(api_urlpatterns)),
 ]
+
+if settings.DEBUG:
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    from django.conf.urls.static import static
+
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
