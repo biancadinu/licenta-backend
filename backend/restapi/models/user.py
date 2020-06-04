@@ -12,5 +12,5 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=150)
     email = models.EmailField()
     iron_intake = models.IntegerField(blank=True, null=True)
-    sex = models.CharField(choices=SEXES, max_length=10)
+    sex = models.CharField(choices=SEXES, max_length=10, blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
