@@ -25,6 +25,8 @@ api_urlpatterns = [
     path('daily-food-list/', views.DailyFoodListCreate.as_view()),
     path('recipe/', views.RecipeList.as_view()),
     path('recipe/<int:pk>', views.RecipeGet.as_view()),
+    path('recipe/<int:pk>/favorite/', views.UserRecipeView.as_view()),
+    path('recipe/<int:pk>/remove-favorite/', views.UserRecipeDelteView.as_view())
 ]
 
 urlpatterns = [
@@ -32,7 +34,8 @@ urlpatterns = [
     path('api/', include(api_urlpatterns)),
     path(r'auth/', obtain_jwt_token),
     path(r'token-refresh/', refresh_jwt_token),
-    path(r'users/', views.UserUpdateView.as_view())
+    path(r'users/', views.UserUpdateView.as_view()),
+    path(r'register/', views.UserCreateView.as_view())
 ]
 
 if settings.DEBUG:
