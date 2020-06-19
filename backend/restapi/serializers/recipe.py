@@ -9,12 +9,12 @@ class RecipeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Recipe
-        fields = ['name', 'description', 'duration', 'portion', 'pictures', 'total_iron', 'is_favorite']
+        fields = ['id', 'name', 'description', 'duration', 'portion', 'pictures', 'total_iron', 'is_favorite']
 
     def get_is_favorite(self, recipe):
         user = self.context['request'].user
         try:
-            user_recipes = models.UserRecipe.objects.get(user=user)
+            user_recipes = models.UserRecipe.objects.get(user=user, recipe=recipe)
         except exceptions.ObjectDoesNotExist:
             return False
         else:

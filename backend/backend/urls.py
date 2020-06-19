@@ -23,10 +23,14 @@ from backend import settings
 api_urlpatterns = [
     path('food/', views.FoodListCreateView.as_view()),
     path('daily-food-list/', views.DailyFoodListCreate.as_view()),
+    path('daily-food-list/<int:pk>', views.DailyFoodDelete.as_view()),
     path('recipe/', views.RecipeList.as_view()),
     path('recipe/<int:pk>', views.RecipeGet.as_view()),
     path('recipe/<int:pk>/favorite/', views.UserRecipeView.as_view()),
-    path('recipe/<int:pk>/remove-favorite/', views.UserRecipeDelteView.as_view())
+    path('recipe/<int:pk>/remove-favorite/', views.UserRecipeDelteView.as_view()),
+    path('food/<int:pk>/favorite/', views.UserFoodView.as_view()),
+    path('food/<int:pk>/remove-favorite/', views.UserFoodDeleteView.as_view()),
+
 ]
 
 urlpatterns = [

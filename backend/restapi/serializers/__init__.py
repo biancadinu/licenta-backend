@@ -3,3 +3,4 @@ from .daily_food_list import DailyFoodSerializer
 from .recipe import RecipeSerializer
 from .user import UserUpdateSerializer, UserCreateSerializer
 from .user_recipe import UserRecipeSerializer
+from .user_food import UserFoodSerializer

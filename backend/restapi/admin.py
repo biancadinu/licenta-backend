@@ -8,4 +8,5 @@ admin.site.register(models.DailyFoodList)
 admin.site.register(models.Recipe)
 admin.site.register(models.Ingredient)
 admin.site.register(models.UserRecipe)
+admin.site.register(models.UserFood)
 
