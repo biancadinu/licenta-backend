@@ -9,7 +9,8 @@ class RecipeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Recipe
-        fields = ['id', 'name', 'description', 'duration', 'portion', 'pictures', 'total_iron', 'is_favorite']
+        fields = ['id', 'name', 'description', 'duration', 'portion', 'pictures', 'total_iron', 'is_favorite',
+                  'ingredients']
 
     def get_is_favorite(self, recipe):
         user = self.context['request'].user
