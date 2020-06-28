@@ -19,3 +19,10 @@ class UserCreateView(generics.CreateAPIView):
     queryset = models.User.objects.all()
     serializer_class = serializers.UserCreateSerializer
     permission_classes = []
+
+
+class UserDetailsView(generics.ListAPIView):
+    serializer_class = serializers.UserCreateSerializer
+
+    def get_queryset(self):
+        return models.User.objects.filter(id=self.request.user.id)

@@ -1,6 +1,3 @@
-import datetime
-
-from django.core import exceptions
 from rest_framework import generics, response, status
 
 from restapi import models, serializers
@@ -14,7 +11,12 @@ class DailyFoodListCreate(generics.ListCreateAPIView):
         user = self.request.user
         date = request.query_params['date']
         self.queryset = models.DailyFoodList.objects.filter(date=date, user=user)
-        return super().list(request, *args, **kwargs)
+        resp = super().list(request, *args, **kwargs)
+        total_iron = 0
+        for daily_food_list in self.queryset:
+            total_iron += daily_food_list.food.all()[0].iron
+        resp.data[0]['total_iron'] = total_iron
+        return response.Response(data=resp.data)
 
     def create(self, request, *args, **kwargs):
         user = self.request.user
