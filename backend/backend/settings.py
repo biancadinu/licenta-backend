@@ -69,12 +69,12 @@ REST_FRAMEWORK = {
     ),
 }
 
+AUTH_USER_MODEL = 'restapi.User'
+
 JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=24),
 }
-
-AUTH_USER_MODEL = 'restapi.User'
 
 ROOT_URLCONF = 'backend.urls'
 
